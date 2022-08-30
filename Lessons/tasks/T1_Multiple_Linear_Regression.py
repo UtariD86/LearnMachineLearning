@@ -164,7 +164,7 @@ print(model.summary())
 # ==============================================================================
 
 
-#>>> First step of Backward Elimination by p-value
+#>>> Second step of Backward Elimination by p-value
 
 X_list = lastresult4.iloc[:,[0,1,2,5]].values
 X_list = np.array(X_list, dtype=float )
@@ -203,7 +203,7 @@ print(model.summary())
 # ==============================================================================
 
 
-#>>> First step of Backward Elimination by p-value
+#>>> Third step of Backward Elimination by p-value
 
 X_list = lastresult4.iloc[:,[0,1,2]].values
 X_list = np.array(X_list, dtype=float )
@@ -239,3 +239,15 @@ print(model.summary())
 # Skew:                          -0.146   Prob(JB):                        0.510
 # Kurtosis:                       1.509   Cond. No.                         1.12
 # ==============================================================================
+
+
+#>>> Train machine with new (not eliminated) datas
+
+x_train, x_test, y_train, y_test = train_test_split(X_list, lastresult4.iloc[:,-1:], test_size = 0.33, random_state = 0)
+
+regressor.fit(x_train, y_train)
+
+
+#>>> Asking to predict again after training
+
+y_pred = regressor.predict(x_test)

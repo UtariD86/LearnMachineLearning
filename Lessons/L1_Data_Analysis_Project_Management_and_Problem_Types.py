@@ -13,13 +13,13 @@ data = pd.read_csv(datapath)
 
 #>>>data processing
 
-boy = data["boy"]
+height = data["height"]
 
-class insan:
-    boy = 180
+class human:
+    height = 180
 
 
-ali = insan()
+peter = human()
 
 
 #>>>work with missing datas
