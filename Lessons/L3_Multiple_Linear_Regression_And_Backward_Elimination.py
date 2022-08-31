@@ -5,18 +5,18 @@ import numpy as np
 import matplotlib as plt
 
 #-----codes-----
-#>>>data loads
+#>>> Data loads
 
 datapath = "C:\\Users\\l340\\Desktop\Dolap\\LearnPython\\LearnMachineLearning\\Lessons\\dataLib\\datas.csv"
 data = pd.read_csv(datapath)
 
 
-#>>>data processing
+#>>> Data processing
 
 age = data.iloc[:,1:4].values
 
 
-#>>> work with categorized datas
+#>>> Work with categorized datas
 
 country = data.iloc[:,0:1].values
 
@@ -30,7 +30,7 @@ ohe = preprocessing.OneHotEncoder()
 country = ohe.fit_transform(country).toarray()
 
 
-#>>> work with categorized datas
+#>>> Work with categorized datas
 
 altgender = data.iloc[:,-1:].values
 
@@ -44,7 +44,7 @@ ohe = preprocessing.OneHotEncoder()
 altgender = ohe.fit_transform(altgender).toarray()
 
 
-#>>> combine datas and crate dataframes
+#>>> Combine datas and crate dataframes
 
 dataresult = pd.DataFrame(data = country, index = range(22), columns = ["france","turkey","united states"])
 
@@ -54,15 +54,12 @@ gender = data.iloc[:,-1].values
 
 dataresult3 = pd.DataFrame(data = altgender[:,:1], index = range(22), columns = ["Cinsiyet"])
 
-
-#concat -> üleştirmek
-
 lastresult = pd.concat([dataresult, dataresult2], axis = 1)
 
 lastresult2 = pd.concat([lastresult, dataresult3], axis = 1)
 
 
-#>>>split datas as train and test
+#>>> Split datas as train and test
 
 from sklearn.model_selection import train_test_split
 
@@ -195,7 +192,7 @@ X_list = heightdatas.iloc[:,[0,1,2,3]].values
 X_list = np.array(X_list, dtype=float )
 
 
-# Last OLS for check
+#>>> Last OLS for check
 
 model = sm.OLS(height, X_list).fit()
 

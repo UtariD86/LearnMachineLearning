@@ -5,20 +5,20 @@ import numpy as np
 import matplotlib as plt
 
 #-----codes-----
-#>>>data loads
+#>>> Data loads
 
 datapath = "D:\\Dolap\\LearnPython\\LearnMachineLearning\\Lessons\\dataLib\\task1_tennis.csv"
 data = pd.read_csv(datapath)
 
 
-#>>>data processing
+#>>> Data processing
 
 temperature = data.iloc[:,1:2]
 
 humidity = data.iloc[:,2:3]
 
 
-#>>> work with categorized datas
+#>>> Work with categorized datas
 
 outlook = data.iloc[:,:1].values
 
@@ -41,7 +41,7 @@ windy = data.iloc[:,3:4].values.astype(float)
 windy[:,-1] = le.fit_transform(data.iloc[:,3:4])
 
 
-#>>> combine datas and crate dataframes
+#>>> Combine datas and crate dataframes
 
 windy = pd.DataFrame(data = windy, index = range(14), columns = ["windy"])
 
@@ -58,7 +58,7 @@ lastresult3 = pd.concat([lastresult2, dataresult2], axis = 1)
 lastresult4 = pd.concat([lastresult3, humidity], axis = 1)
 
 
-#>>>split datas as train and test
+#>>> Split datas as train and test
 
 from sklearn.model_selection import train_test_split
 

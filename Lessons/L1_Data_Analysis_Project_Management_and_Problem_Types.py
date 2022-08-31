@@ -5,13 +5,13 @@ import numpy as np
 import matplotlib as plt
 
 #-----codes-----
-#>>>data loads
+#>>> Data loads
 
 datapath = "C:\\Users\\l340\\Desktop\Dolap\\LearnPython\\LearnMachineLearning\\Lessons\\dataLib\\missingdatas.csv"
 data = pd.read_csv(datapath)
 
 
-#>>>data processing
+#>>> Data processing
 
 height = data["height"]
 
@@ -22,7 +22,7 @@ class human:
 peter = human()
 
 
-#>>>work with missing datas
+#>>> Work with missing datas
 
 from sklearn.impute import SimpleImputer
 imputer = SimpleImputer(missing_values=np.nan, strategy="mean") #take avarage for missing datas
@@ -32,7 +32,7 @@ imputer = imputer.fit(age[:,1:4]) #learn datas
 age[:,1:4] = imputer.transform(age[:,1:4]) #change missing (nan) datas
 
 
-#>>> work with categorized datas
+#>>> Work with categorized datas
 
 country = data.iloc[:,0:1].values
 
@@ -46,7 +46,7 @@ ohe = preprocessing.OneHotEncoder()
 country = ohe.fit_transform(country).toarray()
 
 
-#>>> combine datas and crate dataframes
+#>>> Combine datas and crate dataframes
 
 dataresult = pd.DataFrame(data = country, index = range(22), columns = ["france","turkey","united states"])
 
@@ -56,22 +56,19 @@ gender = data.iloc[:,-1].values
 
 dataresult3 = pd.DataFrame(data = gender, index = range(22), columns = ["Cinsiyet"])
 
-
-#concat -> üleştirmek
-
 lastresult = pd.concat([dataresult, dataresult2], axis = 1)
 
 lastresult2 = pd.concat([lastresult, dataresult3], axis = 1)
 
 
-#>>>split datas as train and test
+#>>> Split datas as train and test
 
 from sklearn.model_selection import train_test_split
 
 x_train, x_test, y_train, y_test = train_test_split(lastresult, dataresult3, test_size = 0.33, random_state = 0) 
 
 
-#>>>Data Scaling
+#>>> Data Scaling
 
 from sklearn.preprocessing import StandardScaler
 
