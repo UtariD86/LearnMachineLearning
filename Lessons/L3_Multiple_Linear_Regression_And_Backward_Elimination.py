@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import matplotlib as plt
 
-#-----codes-----
+#-----codes----
 #>>> Data loads
 
 datapath = "D:\\Dolap\\LearnPython\\LearnMachineLearning\\Lessons\\dataLib\\datas.csv"
