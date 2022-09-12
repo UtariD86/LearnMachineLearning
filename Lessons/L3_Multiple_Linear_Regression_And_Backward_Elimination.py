@@ -7,7 +7,7 @@ import matplotlib as plt
 #-----codes-----
 #>>> Data loads
 
-datapath = "C:\\Users\\l340\\Desktop\Dolap\\LearnPython\\LearnMachineLearning\\Lessons\\dataLib\\datas.csv"
+datapath = "D:\\Dolap\\LearnPython\\LearnMachineLearning\\Lessons\\dataLib\\datas.csv"
 data = pd.read_csv(datapath)
 
 
@@ -222,4 +222,3 @@ print(model.summary())
 # Skew:                           0.605   Prob(JB):                        0.473
 # Kurtosis:                       3.416   Cond. No.                         369.
 # ==============================================================================
-
