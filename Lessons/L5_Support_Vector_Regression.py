@@ -96,12 +96,20 @@ from sklearn.preprocessing import StandardScaler
 sc1 = StandardScaler()
 sc2 = StandardScaler()
 
-X_train = sc1.fit_transform(X)
-X_test = sc2.fit_transform(Y)
+x_scaled = sc1.fit_transform(X)
+y_scaled = sc2.fit_transform(Y)
 
 
-#>>>
+#>>> Using SVR
 
 from sklearn.svm import SVR
 
-sReg = SVR(kernel = 'rbf')
+sReg = SVR(kernel = "rbf")
+sReg.fit(x_scaled, y_scaled)
+
+plt.scatter(x_scaled, y_scaled, color = "red")
+plt.plot(x_scaled, sReg.predict(x_scaled), color = "blue")
+plt.show()
+
+print(sReg.predict([[11]]))
+print(sReg.predict([[6.6]]))
