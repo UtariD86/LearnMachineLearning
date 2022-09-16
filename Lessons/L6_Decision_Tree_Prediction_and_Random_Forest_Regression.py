@@ -40,6 +40,7 @@ lReg.fit(X, Y)
 #>visualization
 plt.scatter(X, Y)
 plt.plot(x,lReg.predict(X))
+plt.title("Linear Regression")
 plt.show()
 
 
@@ -58,6 +59,7 @@ lReg2.fit(x_poly, y)
 #>visualization
 plt.scatter(X, Y)
 plt.plot(X, lReg2.predict(pReg.fit_transform(X)))
+plt.title("Polynomial Regression(degree = 2)")
 plt.show()
 
 
@@ -74,6 +76,7 @@ lReg3.fit(x_poly, y)
 #>visualization
 plt.scatter(X, Y)
 plt.plot(X, lReg3.predict(pReg2.fit_transform(X)))
+plt.title("Polynomial Regression(degree = 4)")
 plt.show()
 
 
@@ -109,6 +112,7 @@ sReg.fit(x_scaled, y_scaled)
 
 plt.scatter(x_scaled, y_scaled, color = "red")
 plt.plot(x_scaled, sReg.predict(x_scaled), color = "blue")
+plt.title("Support Vector Regression")
 plt.show()
 
 print(sReg.predict([[11]]))
@@ -124,6 +128,7 @@ dtReg.fit(X,Y)
 
 plt.scatter(X,Y, color = "red")
 plt.plot(X,dtReg.predict(X), color = "blue")
+plt.title("Decision Tree")
 plt.show()
 
 Z = X + 0.5
@@ -131,7 +136,25 @@ K = X - 0.5
 
 plt.plot(X, dtReg.predict(Z), color = "green")
 plt.plot(X,dtReg.predict(K), color = "cyan")
+plt.title("Decision Tree Varianted")
 plt.show()
 
 print(dtReg.predict([[11]]))
 print(dtReg.predict([[6.6]]))
+
+
+#>>>Using Random Forest Regression
+
+from sklearn.ensemble import RandomForestRegressor
+rfReg = RandomForestRegressor(n_estimators = 10 , random_state = 0) #"n_estimators" is determinates the number of Decision Trees
+rfReg.fit(X,Y.ravel())
+
+print(rfReg.predict([[6.6]]))
+
+plt.scatter(X,Y, color = "red")
+plt.plot(X, rfReg.predict(X), color = "blue")
+plt.title("Random Forest Regression")
+
+plt.plot(X, rfReg.predict(Z), color = "green")
+plt.plot(X, rfReg.predict(K), color = "yellow")
+plt.show()
